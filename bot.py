@@ -1,4 +1,5 @@
 import asyncio
+import os
 from aiogram import Bot, Dispatcher, types, F
 from aiogram.filters import Command
 from aiogram.fsm.context import FSMContext
@@ -6,7 +7,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7800458629:AAHgUCk1V6gfqXGPYPeyFvoADW9YEhBmLvc")
-ADMIN_ID = 6140962854
+ADMIN_ID = 7211735988
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
@@ -62,5 +63,17 @@ async def get_muammo(message: types.Message, state: FSMContext):
     murojaat_soni += 1
     user_data = await state.get_data()
     hisobot = (
-        f"🚨 MUROJAAT #{murojaat_soni}\n\
+        f"🚨 MUROJAAT #{murojaat_soni}\n\n"
+        f"👤 Ism: {user_data['ism']}\n"
+        f"📍 Filial: {user_data['tanlangan_filial']}\n"
+        f"📝 Muammo: {message.text}"
+    )
+    await bot.send_message(ADMIN_ID, hisobot)
+    await message.answer("Murojaatingiz yuborildi.")
+    await state.clear()
 
+async def main():
+    await dp.start_polling(bot)
+
+if __name__ == "__main__":
+    asyncio.run(main())
