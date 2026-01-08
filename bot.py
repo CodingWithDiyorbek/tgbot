@@ -7,7 +7,7 @@ from aiogram.fsm.state import State, StatesGroup
 from aiogram.utils.keyboard import ReplyKeyboardBuilder
 
 BOT_TOKEN = os.getenv("BOT_TOKEN", "7800458629:AAHgUCk1V6gfqXGPYPeyFvoADW9YEhBmLvc")
-ADMIN_ID = 7211735988
+ADMIN_ID = 6140962854
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
@@ -77,3 +77,4 @@ async def main():
 
 if __name__ == "__main__":
     asyncio.run(main())
+
